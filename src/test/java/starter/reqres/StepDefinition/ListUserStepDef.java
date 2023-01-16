@@ -28,15 +28,15 @@ public class ListUserStepDef {
         SerenityRest.when().get(ReqresAPI.GET_LIST_USERS);
     }
 
-    @And("response body should page should be {int}")
+    @And("response body should be page {int}")
     public void responseBodyShouldPageShouldBe(int page) {
         SerenityRest.then().body("page", equalTo(page));
     }
 
+    @Then("validate Json Schema list user")
     public void validateJsonSchemaListUser() {
-        File jsonSchema = new File(ReqresAPI.JSON_SCHEMA + "ListUserSchema.json");
+        File jsonSchema = new File(ReqresAPI.JSON_SCHEMA + "/PutListUserSchema.json");
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(jsonSchema));
     }
-
 
 }

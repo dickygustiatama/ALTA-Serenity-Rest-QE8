@@ -24,17 +24,29 @@ public class ReqresStepDef {
         SerenityRest.then().statusCode(ok);
     }
 
+    //    @And("response body name should be {string} and job {string}")
+//    public void responseBodyNameShouldBeAndJob(String name, String job) {
+//        SerenityRest.then()
+//                    .body("name", equalTo(name))
+//                    .body("job", equalTo(job));
+//    }
     @And("response body name should be {string} and job {string}")
     public void responseBodyNameShouldBeAndJob(String name, String job) {
         SerenityRest.then()
-                    .body("name", equalTo(name))
-                    .body("job", equalTo(job));
+                .body("name", equalTo(name))
+                .body("job", equalTo(job));
     }
 
-    @And("validate json schema update user")
+    @And("response body name should be id {int} and token {string}")
+    public void responseBodyNameShouldBeIdAndToken(Integer id, String token) {
+        SerenityRest.then()
+                .body("id", equalTo(id))
+                .body("token", equalTo(token));
+    }
+
+    @Then("validate json schema register user")
     public void validateJsonSchemaUpdateUser() {
-        File jsonschema = new File(ReqresAPI.JSON_SCHEMA + "/PutUpdateUserSchema.sjon");
+        File jsonSchema = new File(ReqresAPI.JSON_SCHEMA + "/PutRegisterUserSchema.json");
         SerenityRest.then().assertThat().body(JsonSchemaValidator.matchesJsonSchema(jsonSchema));
     }
-
 }

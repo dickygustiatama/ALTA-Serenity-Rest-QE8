@@ -13,7 +13,7 @@ public class ReqresAPI {
 
     public static String JSON_REQUEST = DIR + "/src/test/resources/JSON/Request"; //untuk path JSON Request
 
-    public static String JSON_SCHEMA = DIR + "/src/test/resources/JSON/JsonSchema";
+    public static String JSON_SCHEMA = DIR + "/src/test/resources/JSON/JsonSchema"; //untuk path JSON Schema Request
 //---------------------------------------------------------------------------------------------------------
     public static String GET_LIST_USERS = BASE_URL + "/api/users?page={page}"; //untuk URL get list users
 
@@ -23,7 +23,7 @@ public class ReqresAPI {
 
     public static String DELETE_USER = BASE_URL + "/api/users/{id}"; //untuk URL delete users
 
-    public static String REGISTER_USER = BASE_URL + "/api/register{id}"; //untuk URL register users
+    public static String REGISTER_USER = BASE_URL + "/api/register"; //untuk URL register users
 
 //---------------------------------------------------------------------------------------------------------
 
@@ -54,9 +54,15 @@ public class ReqresAPI {
     }
 
     @Step("post register user")
-    public void postRegisterUser(int id) {
+    public void putRegisterUser(int id) {
         SerenityRest.given()
                 .pathParam("id", id);
+    }
+    @Step("post register user")
+    public void postRegisterUser(File json) {
+        SerenityRest.given()
+                .contentType(ContentType.JSON)
+                .body(json);
     }
 
 }
