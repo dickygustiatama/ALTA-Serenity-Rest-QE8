@@ -25,6 +25,8 @@ public class ReqresAPI {
 
     public static String REGISTER_USER = BASE_URL + "/api/register"; //untuk URL register users
 
+    public static String LOGIN_USER = BASE_URL + "/api/login"; //untuk URL login users
+
 //---------------------------------------------------------------------------------------------------------
 
     @Step("Get list users")

@@ -18,9 +18,16 @@ public class UpdateUserStepDef {
 
     @Given("put update user with valid json with id {int}")
     public void putUpdateUserWithValidJsonWithId(int id) {
-        File json = new File(ReqresAPI.JSON_REQUEST + "/PutUpdateUser.json");
+        File json = new File(ReqresAPI.JSON_REQUEST + "/RequestUpdateUser.json");
         reqresAPI.putUpdateUser(id, json);
     }
+
+    @Given("put update user with invalid json with id {int}")
+    public void putUpdateUserWithInvalidJsonWithId(int id) {
+        File json = new File(ReqresAPI.JSON_REQUEST + "/RequestUpdateInvalidUser.json");
+        reqresAPI.putUpdateUser(id, json);
+    }
+
 
     @When("send request put update user")
     public void sendRequestPutUpdateUser() {
